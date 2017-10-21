@@ -80,6 +80,7 @@
 
   import VLayout from '@/layouts/Default';
   import VCard from '@/components/Card';
+  import { mapState } from 'vuex';
 
   export default {
     /**
@@ -93,6 +94,15 @@
     components: {
       VLayout,
       VCard,
+    },
+
+    computed: mapState([
+      'account',
+    ]),
+
+    mounted: function () {
+      const { firstName, lastName, description, email } = this.account;
+      console.log('stuff', firstName, lastName, description, email);
     },
   };
 </script>

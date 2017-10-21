@@ -20,6 +20,7 @@ export default class AccountTransformer extends Transformer {
       email: account.email,
       firstName: account.first_name,
       lastName: account.last_name,
+      description: account.description,
     };
   }
 
@@ -35,6 +36,7 @@ export default class AccountTransformer extends Transformer {
       email: account.email,
       first_name: account.firstName,
       last_name: account.lastName,
+      description: account.description,
     };
   }
 }

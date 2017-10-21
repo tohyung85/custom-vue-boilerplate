@@ -7,7 +7,7 @@ class AuthProxy extends Proxy {
    * @param {Object} parameters The query parameters.
    */
   constructor(parameters = {}) {
-    super('oauth', parameters);
+    super('auth', parameters);
   }
 
   /**
@@ -18,17 +18,13 @@ class AuthProxy extends Proxy {
    *
    * @returns {Promise} The result in a promise.
    */
-  login({ username, password }) {
+  login({ email, password }) {
     const data = {
-      username,
+      email,
       password,
-      client_id: process.env.API_CLIENT_ID,
-      client_secret: process.env.API_CLIENT_SECRET,
-      grant_type: 'password',
-      scope: '',
     };
 
-    return this.submit('post', `${this.endpoint}/token`, data);
+    return this.submit('post', `${this.endpoint}/login`, data);
   }
 
   /**

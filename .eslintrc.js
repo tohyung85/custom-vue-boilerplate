@@ -27,6 +27,8 @@ module.exports = {
     'no-param-reassign': 0,
     'no-multi-assign': 0,
 
+    'object-shorthand': 0,
+
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       'js': 'never',
