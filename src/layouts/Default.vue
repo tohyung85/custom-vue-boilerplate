@@ -1,69 +1,72 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <router-link
-        class="navbar-brand"
-        :to="{ name: 'home.index' }"
-      >
-        Vue 2 Boilerplate
-      </router-link>
+  <sidebar-wrapper>
+    Sidebar here
+    <div slot="main-content">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <router-link
+          class="navbar-brand"
+          :to="{ name: 'home.index' }"
+        >
+          Vue 2 Boilerplate
+        </router-link>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        @click="toggleMenu"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          @click="toggleMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div
-        class="collapse navbar-collapse"
-        :class="{ show : menuCollapsed}"
-      >
-        <ul class="navbar-nav mr-auto">
-          <router-link
-            :to="{ name: 'home.index' }"
-            active-class="active"
-            class="nav-item"
-            tag="li"
-          >
-            <a class="nav-link">
-              Home
+        <div
+          class="collapse navbar-collapse"
+          :class="{ show : menuCollapsed}"
+        >
+          <ul class="navbar-nav mr-auto">
+            <router-link
+              :to="{ name: 'home.index' }"
+              active-class="active"
+              class="nav-item"
+              tag="li"
+            >
+              <a class="nav-link">
+                Home
+              </a>
+            </router-link>
+            <router-link
+              :to="{ name: 'account.index' }"
+              active-class="active"
+              class="nav-item"
+              tag="li"
+            >
+              <a class="nav-link">
+                Account
+              </a>
+            </router-link>
+          </ul>
+          <span class="navbar-text">
+            <a
+              class="btn btn-light"
+              href="#"
+              @click.prevent="logout"
+            >
+              <i class="fa fa-sign-out"></i>
             </a>
-          </router-link>
-          <router-link
-            :to="{ name: 'account.index' }"
-            active-class="active"
-            class="nav-item"
-            tag="li"
-          >
-            <a class="nav-link">
-              Account
-            </a>
-          </router-link>
-        </ul>
-        <span class="navbar-text">
-          <a
-            class="btn btn-light"
-            href="#"
-            @click.prevent="logout"
-          >
-            <i class="fa fa-sign-out"></i>
-          </a>
-        </span>
-      </div>
-    </nav>
+          </span>
+        </div>
+      </nav>
 
-    <div class="container pt-4">
-      <div class="row">
-        <div class="col col-12">
-          <!-- Content will be placed here -->
-          <slot></slot>
+      <div class="container pt-4">
+        <div class="row">
+          <div class="col col-12">
+            <!-- Content will be placed here -->
+            <slot></slot>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
+    </div>
+  </sidebar-wrapper>
 </template>
 
 <script>
@@ -76,6 +79,7 @@
    * Layouts are used to store a lot of shared code.
    * This way the app stays clean.
    */
+  import SidebarWrapper from '@/components/Sidebar';
 
   export default {
     /**
@@ -111,6 +115,10 @@
       toggleMenu() {
         this.menuCollapsed = !this.menuCollapsed;
       },
+    },
+
+    components: {
+      SidebarWrapper,
     },
   };
 </script>
